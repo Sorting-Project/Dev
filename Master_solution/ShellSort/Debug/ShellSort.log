@@ -1,0 +1,5 @@
+﻿  ShellSort.cpp
+c:\users\mi\desktop\sorting\dev\sorting_birukov\shellsort\shellsort.cpp(1): warning C4603: _CRT_SECURE_NO_WARNINGS: макрос не определен или определение изменилось после использования предкомпилированного заголовка
+  c:\users\mi\desktop\sorting\dev\sorting_birukov\shellsort\shellsort.cpp(1): note: Добавление макроопределения в предкомпилированный заголовок вместо определения его здесь
+  c:\users\mi\desktop\sorting\dev\sorting_birukov\shellsort\shellsort.cpp(2): note: использование предварительно скомпилированного заголовка
+  ShellSort.vcxproj -> C:\Users\Mi\Desktop\Sorting\Dev\Sorting_Birukov\Debug\ShellSort.exe
