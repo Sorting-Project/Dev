@@ -1,56 +1,60 @@
-﻿// radix_sort.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-#include <iostream>
+﻿struct StringItem {
+	const char* str; //указатель на строку
+	StringItem* next;
+};
 
-template <class T>
-void my_radix_sort(vector<T>& v)
+//pList - начало списка указателей на строки
+//iDigit - разряд, по которому сортирует
+//возвращает указатель на первый элемент отсортированной последовательности
+StringItem*  radix_sort_msd_for_string(StringItem* pList, unsigned int iDigit)
 {
-	std::vector<T> buckets[256];
-	int sizes[256];
+	// количество вариантов значения одного разряда (char)
+	const int iRange = 256;
 
-	for (int i = 0;i < 256;i++)
-		sizes[i] = 0;
+	//массив bucket-ов (под-списков)
+	StringItem* front[iRange];
+	memset(front, 0, sizeof(front));
 
-	size_t v_size = v.size();
+	StringItem** ppNextItem[iRange];
+	for (int i = 0; i < iRange; i++)
+		ppNextItem[i] = &front[i];
 
-	int mask[] = { 255,65280,16711680,-16777216 };
-
-	for (int r = 0; r < 4; r++)
+	//разбиваем список на bucket-ты, в зависимости от значения разряда
+	while (pList)
 	{
-		//const int mask = (0xff) << (8 * r);
-		int cmask = mask[r];
+		StringItem* temp = pList;
+		pList = pList->next;
 
-		unsigned char b;
-		for (size_t i = 0; i < v_size; ++i)
-		{
-			b = (v[i] & cmask) >> (8 * r);
-			sizes[b]++;
-		}
+		temp->next = NULL; //отключаем от списка
+
+		unsigned char c = (unsigned char)temp->str[iDigit];
+		*ppNextItem[c] = temp;
+		ppNextItem[c] = &temp->next;
 	}
 
-	for (int i = 0;i < 256;i++)
-		buckets[i].reserve(sizes[i]);
+	//строим выходной список
+	StringItem* pResult = NULL;
+	StringItem** ppNext = &pResult;
 
-	for (int r = 0; r < 4; r++)
+	//нулевой bucket возвращаем весь - он уже отсортирован
+	*ppNext = front[0];
+	while (*ppNext)
+		ppNext = &((*ppNext)->next);
+
+	for (int i = 1; i < iRange; i++)
 	{
-		int cmask = mask[r];
+		//пустые - пропускаем
+		if (!front[i])
+			continue;
 
-		T val;
-		unsigned char b;
-		for (size_t i = 0; i < v_size; ++i)
-		{
-			b = (v[i] & cmask) >> (8 * r);
-			buckets[b].push_back(v[i]);
-		}
+		if (front[i]->next == NULL)// с одним элементом - сразу добавляем
+			*ppNext = front[i];
+		else    // остальные - на сортировку по следующему разряду
+			*ppNext = radix_sort_msd_for_string(front[i], iDigit + 1);
 
-		int k = 0;
-		for (int j = 0;j < 256;j++)
-		{
-			//if (buckets[j].empty()) continue;
-			size_t b_size = buckets[j].size();
-			for(size_t l = 0;l < b_size;l++)
-				v[k++] = buckets[j][l];
-			buckets[j].clear();
-		}
+		while (*ppNext)
+			ppNext = &((*ppNext)->next);
 	}
+
+	return pResult;
 }
