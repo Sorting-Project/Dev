@@ -1,0 +1,5 @@
+﻿  pch.cpp
+  Pyramidize.cpp
+c:\users\mi\desktop\sorting\dev\gura\pyramidize\pyramidize.cpp(34): warning C4101: tmp: неиспользованная локальная переменная
+c:\users\mi\desktop\sorting\dev\gura\pyramidize\pyramidize.cpp(54): warning C4244: аргумент: преобразование "time_t" в "unsigned int", возможна потеря данных
+  Pyramidize.vcxproj -> C:\Users\Mi\Desktop\Sorting\Dev\Gura\x64\Debug\Pyramidize.exe

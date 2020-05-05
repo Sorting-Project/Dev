@@ -1,2 +1,4 @@
-﻿  Tricky_sort.cpp
+﻿  pch.cpp
+  Tricky_sort.cpp
+  LINK : не найден или не выполнена сборка C:\Users\Mi\Desktop\Sorting\Dev\Sorting_Birukov\Debug\Tricky_sort.exe при последней инкрементной компоновке; выполняется полная компоновка
   Tricky_sort.vcxproj -> C:\Users\Mi\Desktop\Sorting\Dev\Sorting_Birukov\Debug\Tricky_sort.exe

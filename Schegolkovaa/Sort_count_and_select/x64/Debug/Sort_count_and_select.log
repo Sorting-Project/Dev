@@ -1,0 +1,13 @@
+﻿  pch.cpp
+  Sort_count_and_select.cpp
+c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(26): error C2131: выражение не определяется константой
+  c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(26): note: сбой вызван чтением переменной вне срока ее существования
+  c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(26): note: см. использование "k"
+c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(28): error C3863: тип массива "int [k]" является неназначаемым
+c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(43): error C2131: выражение не определяется константой
+  c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(43): note: сбой вызван чтением переменной вне срока ее существования
+  c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(43): note: см. использование "n"
+c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(45): warning C4552: ">>": результат выражения не используется
+c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(49): warning C4552: "<<": результат выражения не используется
+c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(51): error C3863: тип массива "int [n]" является неназначаемым
+c:\users\mi\desktop\sorting\dev\schegolkovaa\sort_count_and_select\sort_count_and_select.cpp(55): warning C4552: "<<": результат выражения не используется
