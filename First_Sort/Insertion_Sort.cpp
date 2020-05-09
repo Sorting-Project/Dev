@@ -3,27 +3,38 @@
 
 #include "pch.h"
 #include <iostream>
-void SortInsertion(int mas[], int n)
+#include <vector>
+using namespace std;
+void SortInsertion(vector<int> &vec, int size)
 {
 	int key = 0;
 	int i = 0;
-	for (int j = 1; j < n; j++) 
+	for (int j = 1; j < size; j++)
 	{
-		key = mas[j];
+		key = vec[j];
 		i = j - 1;
-		while (i >= 0 && mas[i] > key) 
+		while (i >= 0 && vec[i] > key)
 		{
-			mas[i + 1] = mas[i];
+			vec[i + 1] = vec[i];
 			i = i - 1;
-			mas[i + 1] = key;
+			vec[i + 1] = key;
 		}
 	}
 }
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	setlocale(LC_ALL, "Russian");
+	cout << "введите числа, которые хотите отсортировать (для окончания ввода чисел, нажмите на любой знак, который не является числом)" << endl;
+	vector <int> vec;
+	int h;
+	while (cin >> h)
+		vec.push_back(h);
+	for (size_t i = 0; i < vec.size(); i++) cout << vec[i] << endl;
+	SortInsertion(vec, vec.size());
+	for (auto i : vec)
+		cout << i << " ";
+	cout << endl;
 }
-
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
 // Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
