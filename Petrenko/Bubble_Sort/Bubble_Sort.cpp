@@ -25,10 +25,25 @@ void sortbycounting(char* mas, int n) {
 		}
 	}
 }
+void princhararray(char* mas, int n) {
+	for (int i = 0; i < n; i++) {
+		std::cout << mas[i] << " ";
+	}
+	std::cout << std::endl;
+}
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+    int size = 0;
+	char arr[100] = { ' ' };
+	std::cout << "Input size of array: ";
+	std::cin >> size;
+	for (int i = 0; i < size; i++) {
+		std::cin >> arr[i];
+	}
+	sortbycounting(arr, size);
+	princhararray(arr, size);
+
 }
 
 // Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
