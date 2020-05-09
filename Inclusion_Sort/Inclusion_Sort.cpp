@@ -3,23 +3,33 @@
 
 #include "pch.h"
 #include <iostream>
-
-void inclusionSort(int *num, int size)
+#include <vector>
+using namespace std;
+void inclusionSort(vector<int> &vec, int size)
 {
 	// Для всех элементов кроме начального
 	for (int i = 1; i < size; i++)
 	{
-		int value = num[i]; // запоминаем значение элемента
+		int value = vec[i]; // запоминаем значение элемента
 		int index = i;     // и его индекс
-		while ((index > 0) && (num[index - 1] > value))
+		while ((index > 0) && (vec[index - 1] > value))
 		{   // смещаем другие элементы к концу массива пока они меньше index
-			num[index] = num[index - 1];
+			vec[index] = vec[index - 1];
 			index--;    // смещаем просмотр к началу массива
 		}
-		num[index] = value; // рассматриваемый элемент помещаем на освободившееся место
+		vec[index] = value; // рассматриваемый элемент помещаем на освободившееся место
 	}
 }
-int main()
-{
-	std::cout << "Hello World!\n";
+int main(){
+setlocale(LC_ALL, "Russian");
+cout << "введите числа, которые хотите отсортировать (для окончания ввода чисел, нажмите на любой знак, который не является числом)" << endl;
+vector <int> vec;
+int h;
+while (cin >> h)
+vec.push_back(h);
+for (size_t i = 0; i < vec.size(); i++) cout << vec[i] << endl;
+inclusionSort(vec, vec.size());
+for (auto i : vec)
+cout << i << " ";
+cout << endl;
 }
