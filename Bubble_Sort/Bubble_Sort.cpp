@@ -1,58 +1,38 @@
-﻿// Bubble_Sort.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
 #include "pch.h"
 #include <iostream>
-void sortbycounting(char* mas, int n) {
-	int counterarray[26] = { 0 };
-	for (int i = 0; i < n; i++) {
-		//'a' <=mas[i] <='z'
-		//int('a')<= int(mas[i]) <= int('z')
-		//int('a')-int('a') <= int(mas[i])-int('a') <= int('z') -int('a')
-		// 0 <= int(mas[i])-int('a') <= 25
-		counterarray[int(mas[i]) - int('a')]++; //вычетаем из нашей букы(значения в системе аски) числовое значение буквы "а"
-	}
-	int j = 0;//counter for mas;
-	for (int i = 0; i < 26; i++)
+#include <vector>
+using namespace std;
+
+void bubbleSort(vector<int> &vec, int size)
+{
+	int tmp;
+
+	for (int i = 0; i < size - 1; ++i) // i - номер прохода
 	{
-		if (counterarray[i] > 0) //ЕСЛИ counterarray больше 0 (то есть не равно букве "а")
+		for (int j = 0; j < size - 1; ++j) // внутренний цикл прохода
 		{
-			for (int k = 0; k < counterarray[i]; k++)
+			if (vec[j + 1] < vec[j])
 			{
-				mas[j] = char(int('a') + i);  //элементы сравниваются попарно и последовательно , если порядок не верный, то элементы меняются местами 
-				j++;
+				tmp = vec[j + 1];
+				vec[j + 1] = vec[j];
+				vec[j] = tmp;
 			}
 		}
 	}
 }
-void princhararray(char* mas, int n) {
-	for (int i = 0; i < n; i++) {
-		std::cout << mas[i] << " ";
-	}
-	std::cout << std::endl;
-}
 
 int main()
 {
-    int size = 0;
-	char arr[100] = { ' ' };
-	std::cout << "Input size of array: ";
-	std::cin >> size;
-	for (int i = 0; i < size; i++) {
-		std::cin >> arr[i];
-	}
-	sortbycounting(arr, size);
-	princhararray(arr, size);
 
+	setlocale(LC_ALL, "Russian");
+	cout << "введите числа, которые хотите отсортировать (для окончания ввода чисел, нажмите на любой знак, который не является числом)" << endl;
+	vector <int> vec;
+	int h;
+	while (cin >> h)
+		vec.push_back(h);
+	for (size_t i = 0; i < vec.size(); i++) cout << vec[i] << endl;
+	bubbleSort (vec, vec.size());
+	for (auto i : vec)
+		cout << i << " ";
+	cout << endl;
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
