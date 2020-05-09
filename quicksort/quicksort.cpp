@@ -1,42 +1,40 @@
-﻿// quicksort.cpp : Этот файл содержит функцию "main". Здесь начинается и заканчивается выполнение программы.
-//
-
 #include "pch.h"
 #include <iostream>
 #include <algorithm>
+
+#include <vector>
 using namespace std;
-void quicksort(int b, int e,int *arr)
+void quicksort(vector<int> &vec, int begin0, int end0/*int b, int e, int *arr*/)
 {
-	int l = b, r = e;
-	int piv = arr[(l + r) / 2]; // Опорным элементом для примера возьмём средний
+	int l = begin0, r = end0;
+	int piv = vec[(l + r) / 2]; // Опорным элементом для примера возьмём средний
 	while (l <= r)
 	{
-		while (arr[l] < piv)
+		while (vec[l] < piv)
 			l++;
-		while (arr[r] > piv)
+		while (vec[r] > piv)
 			r--;
 		if (l <= r)
-			swap(arr[l++], arr[r--]);
+			swap(vec[l++], vec[r--]);
 	}
-	if (b < r)
-		quicksort(b, r);
-	if (e > l)
-		quicksort(l, e);
-}   
+	if (begin0 < r)
+		quicksort(vec, begin0, r);
+	if (end0 > l)
+		quicksort(vec, l, end0);
+}
 
 
 int main()
 {
-    std::cout << "Hello World!\n"; 
+	setlocale(LC_ALL, "Russian");
+	cout << "введите числа, которые хотите отсортировать (для окончания ввода чисел, нажмите на любой знак, который не является числом)" << endl;
+	vector <int> vec;
+	int h;
+	while (cin >> h)
+		vec.push_back(h);
+	for (size_t i = 0; i < vec.size(); i++) cout << vec[i] << endl;
+	quicksort(vec, 0, vec.size() - 1);
+	for (auto i : vec)
+		cout << i << " ";
+	cout << endl;
 }
-
-// Запуск программы: CTRL+F5 или меню "Отладка" > "Запуск без отладки"
-// Отладка программы: F5 или меню "Отладка" > "Запустить отладку"
-
-// Советы по началу работы 
-//   1. В окне обозревателя решений можно добавлять файлы и управлять ими.
-//   2. В окне Team Explorer можно подключиться к системе управления версиями.
-//   3. В окне "Выходные данные" можно просматривать выходные данные сборки и другие сообщения.
-//   4. В окне "Список ошибок" можно просматривать ошибки.
-//   5. Последовательно выберите пункты меню "Проект" > "Добавить новый элемент", чтобы создать файлы кода, или "Проект" > "Добавить существующий элемент", чтобы добавить в проект существующие файлы кода.
-//   6. Чтобы снова открыть этот проект позже, выберите пункты меню "Файл" > "Открыть" > "Проект" и выберите SLN-файл.
